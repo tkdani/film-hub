@@ -6,6 +6,8 @@ const useFilmFetch = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    const token = import.meta.env.VITE_TMDB_API_KEY;
+
     const fetchFilms = async () => {
       setIsLoading(true);
       setError(null);
@@ -14,21 +16,17 @@ const useFilmFetch = () => {
           "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
           {
             headers: {
-              Authorization: `Bearer ${
-                import.meta.env.VITE_TMDB_API_KEY
-              }Bearer ${import.meta.env.VITE_TMDB_API_KEY}`,
-              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
             },
           }
         );
         if (!res.ok) throw Error("Error in fetching data");
         const data = await res.json();
-        setFilms(data);
+        setFilms(data.results.slice(0, 10));
       } catch (err: any) {
         setError(err);
       } finally {
         setIsLoading(false);
-        console.log(films);
       }
     };
 
