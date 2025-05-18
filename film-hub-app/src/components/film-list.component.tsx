@@ -6,7 +6,7 @@ const FilmList = (props: any) => {
   const { films = [], isLoading, error } = useFilmFetch();
   return (
     <div className="w-3/4 p-4">
-      <h2 className="border-b font-bold">{listName}</h2>
+      <h2 className="border-b">{listName}</h2>
       {error && <div>404 ERROR</div>}
       {isLoading && <div>Loading...</div>}
       {films && (
