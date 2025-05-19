@@ -10,7 +10,7 @@ const FilmList = (props: any) => {
       {error && <div>404 ERROR</div>}
       {isLoading && <div>Loading...</div>}
       {films && (
-        <div className="">
+        <div className="grid grid-cols-5 w-max gap-4">
           {films.map((film: any) => {
             return <FilmDetail key={film.id} film={film} />;
           })}
