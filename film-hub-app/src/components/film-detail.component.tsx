@@ -1,7 +1,7 @@
 const FilmDetail = (props: any) => {
   const { film } = props;
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col hover:scale-110 cursor-pointer duration-100">
       <div>
         <img
           className="rounded-tl-xs rounded-tr-xs "
