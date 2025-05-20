@@ -22,7 +22,7 @@ const useFilmFetch = () => {
         );
         if (!res.ok) throw Error("Error in fetching data");
         const data = await res.json();
-        setFilms(data.results.slice(0, 5));
+        setFilms(data.results.slice(0, 10));
       } catch (err: any) {
         setError(err);
       } finally {
