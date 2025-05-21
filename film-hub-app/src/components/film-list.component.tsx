@@ -23,15 +23,15 @@ const FilmList = (props: any) => {
   return (
     <div className=" p-4 w-max">
       <h2 className="border-b mb-5 p-2 text-2xl">{listName}</h2>
-      <div className="flex justify-between items-center px-8">
+      <div className="flex justify-between items-center px-10">
         {error && <div>404 ERROR</div>}
         {isLoading && <div>Loading...</div>}
-        <div className="flex flex-wrap gap-10">
+        <div className="flex flex-wrap gap-12">
           {visibleFilms?.map((film: any, index: number) => {
             return (
               <div key={index} className="relative">
-                <span className="absolute -left-5 font-bold text-3xl font-ranking">
-                  {index + 1}
+                <span className="absolute -left-7 font-bold text-3xl font-ranking">
+                  {onFirstSet ? index + 1 : index + 1 + visibleCount}
                 </span>
                 <FilmDetail key={film.id} film={film} />
               </div>
