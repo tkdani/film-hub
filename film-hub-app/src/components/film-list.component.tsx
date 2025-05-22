@@ -5,8 +5,8 @@ import { TfiAngleRight } from "react-icons/tfi";
 import { TfiAngleLeft } from "react-icons/tfi";
 
 const FilmList = (props: any) => {
-  const { listName } = props;
-  const { films = [], isLoading, error } = useFilmFetch();
+  const { listName, filmType } = props;
+  const { films = [], isLoading, error } = useFilmFetch({ filmType });
   const [visibleFilms, setVisibleFilms] = useState([]);
   const [visibleCount, setVisibleCount] = useState(5);
   const [onFirstSet, setOnFirstSet] = useState(true);
@@ -21,33 +21,37 @@ const FilmList = (props: any) => {
   };
 
   return (
-    <div className=" p-4 w-max">
-      <h2 className="border-b mb-5 p-2 text-2xl">{listName}</h2>
+    <div className=" p-4 w-full">
+      <h2 className="border-b mb-5 p-2 text-2xl w-full">{listName}</h2>
       <div className="flex justify-between items-center px-10">
         {error && <div>404 ERROR</div>}
         {isLoading && <div>Loading...</div>}
-        <div className="flex flex-wrap gap-12">
-          {visibleFilms?.map((film: any, index: number) => {
-            return (
-              <div key={index} className="relative">
-                <span className="absolute -left-7 font-bold text-3xl font-ranking">
-                  {onFirstSet ? index + 1 : index + 1 + visibleCount}
-                </span>
-                <FilmDetail key={film.id} film={film} />
-              </div>
-            );
-          })}
-        </div>
-        <button
-          onClick={handleOnNextFilmsClick}
-          className="cursor-pointer bg-white/20 h-max w-max py-6 rounded-xs hover:bg-white/30 duration-75 hover:scale-105 ml-10"
-        >
-          {onFirstSet ? (
-            <TfiAngleRight className="h-10 w-max" />
-          ) : (
-            <TfiAngleLeft className="h-10 w-max" />
-          )}
-        </button>
+        {films && (
+          <>
+            <div className="flex flex-wrap gap-12">
+              {visibleFilms?.map((film: any, index: number) => {
+                return (
+                  <div key={index} className="relative">
+                    <span className="absolute -left-7 font-bold text-3xl font-ranking">
+                      {onFirstSet ? index + 1 : index + 1 + visibleCount}
+                    </span>
+                    <FilmDetail key={film.id} film={film} />
+                  </div>
+                );
+              })}
+            </div>
+            <button
+              onClick={handleOnNextFilmsClick}
+              className="cursor-pointer bg-white/20 h-max w-max py-6 rounded-xs hover:bg-white/30 duration-75 hover:scale-105 ml-10"
+            >
+              {onFirstSet ? (
+                <TfiAngleRight className="h-10 w-max" />
+              ) : (
+                <TfiAngleLeft className="h-10 w-max" />
+              )}
+            </button>
+          </>
+        )}
       </div>
     </div>
   );
