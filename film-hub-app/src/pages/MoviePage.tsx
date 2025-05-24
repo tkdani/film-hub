@@ -1,7 +1,7 @@
 import useFilmFetch from "../hooks/useFilmFetch";
-import FilmDetail from "./film-detail.component";
+import FilmDetail from "../components/film-detail.component";
 
-const MoviesPage = (props: any) => {
+const MoviePage = (props: any) => {
   const { filmType } = props;
   const { films = [], isLoading, error } = useFilmFetch({ filmType });
 
@@ -19,4 +19,4 @@ const MoviesPage = (props: any) => {
     </div>
   );
 };
-export default MoviesPage;
+export default MoviePage;
