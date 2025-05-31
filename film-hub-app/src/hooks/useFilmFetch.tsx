@@ -26,11 +26,12 @@ const useFilmFetch = () => {
 
         const filteredFilms: Film[] = data.results.map((item: any) => ({
           id: item.id,
-          title: item.title,
+          title: item.media_type === "tv" ? item.name : item.title,
           overview: item.overview,
           poster_path: item.poster_path,
           backdrop_path: item.backdrop_path,
-          release_date: item.release_date,
+          release_date:
+            item.media_type === "tv" ? item.first_air_date : item.release_date,
           vote_average: item.vote_average,
           vote_count: item.vote_count,
           popularity: item.popularity,

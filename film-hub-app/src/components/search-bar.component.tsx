@@ -7,6 +7,7 @@ const SearchBar = () => {
       {pages.map((page) => {
         return (
           <NavLink
+            key={page}
             to={page === "Home" ? "/" : `/${page}`}
             className={({ isActive }) => {
               return isActive
