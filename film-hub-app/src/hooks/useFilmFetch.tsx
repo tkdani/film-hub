@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import type { Film } from "../types/filmType";
 
 const useFilmFetch = () => {
-  const [films, setFilms] = useState<Film[]>([]);
+  const [films, setFilms] = useState<Film[] | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<any>(null);
 
