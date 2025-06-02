@@ -1,11 +1,19 @@
 import FilmListItem from "../components/film-list-item.component";
 import useFilmFetch from "../hooks/useFilmFetch";
 
-const MoviesPage = () => {
-  const { films, isLoading, error } = useFilmFetch({ type: "movie/popular" });
+interface pageType {
+  type: string;
+}
+
+const MoviesPage = (props: pageType) => {
+  const { type } = props;
+  const { films, isLoading, error } = useFilmFetch({
+    type: "movie/popular",
+    page: 1,
+  });
   return (
-    <div>
-      <h1>Movies page</h1>
+    <div className="flex flex-col items-center px-10">
+      <h1 className="">{type} movies</h1>
       {isLoading && <div>Loading...</div>}
       {error && <div>error: {error}</div>}
       {films && (

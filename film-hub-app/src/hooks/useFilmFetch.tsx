@@ -3,10 +3,11 @@ import type { Film } from "../types/filmType";
 
 interface filmType {
   type: string;
+  page: number;
 }
 
 const useFilmFetch = (props: filmType) => {
-  const { type } = props;
+  const { type, page } = props;
   const [films, setFilms] = useState<Film[] | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<any>(null);
@@ -19,7 +20,7 @@ const useFilmFetch = (props: filmType) => {
       setError(null);
       try {
         const res = await fetch(
-          `https://api.themoviedb.org/3/${type}?language=en-US'`,
+          `https://api.themoviedb.org/3/${type}?page=${page}`,
           {
             headers: {
               Authorization: `Bearer ${apiKey}`,

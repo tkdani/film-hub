@@ -7,26 +7,28 @@ interface ListItem {
 const FilmListItem = (props: ListItem) => {
   const { film } = props;
   return (
-    <div className="flex flex-col w-48 hover:scale-110 duration-75">
-      <div className="bg-black border-1 border-b-0 rounded-tr-xs rounded-tl-xs flex items-center justify-center overflow-hidden">
+    <div className="w-40 flex flex-col hover:scale-105 duration-75">
+      <div className="h-60 border-1 border-b-0 rounded-tr-xs rounded-tl-xs">
         {film.poster_path ? (
           <img
-            src={`https://image.tmdb.org/t/p/w185${film.poster_path}`}
+            src={`https://image.tmdb.org/t/p/w342${film.poster_path}`}
             alt={film.title}
-            className="w-full"
+            className=" h-full w-full object-cover rounded-tr-xs rounded-tl-xs"
           />
         ) : (
           <span className="text-xs text-white">No image</span>
         )}
       </div>
-      <div className=" bg-white/50 flex flex-row justify-between h-16 border-1 border-t-0 rounded-br-xs rounded-bl-xs p-1">
-        <div className="flex flex-col">
-          <span className="text-wrap">{film.title}</span>
+      <div className="bg-white/50 flex flex-col justify-between h-20 border-1 border-t-0 rounded-br-xs rounded-bl-xs p-1">
+        <span className="text-pretty w-40">{film.title}</span>
+        <div className="flex flex-row items-center justify-between">
           <span className="italic text-xs">
             {film.vote_average.toFixed(1)} / 10 ({film.vote_count})
           </span>
+          <span className="italic text-xs">
+            {film.release_date.slice(0, 4)}
+          </span>
         </div>
-        <span className="italic ">{film.release_date.slice(0, 4)}</span>
       </div>
     </div>
   );
