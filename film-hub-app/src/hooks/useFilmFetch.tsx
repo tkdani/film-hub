@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react";
 import type { Film } from "../types/filmType";
 
-const useFilmFetch = () => {
+interface filmType {
+  type: string;
+}
+
+const useFilmFetch = (props: filmType) => {
+  const { type } = props;
   const [films, setFilms] = useState<Film[] | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<any>(null);
@@ -14,7 +19,7 @@ const useFilmFetch = () => {
       setError(null);
       try {
         const res = await fetch(
-          `https://api.themoviedb.org/3/trending/all/day?language=en-US'`,
+          `https://api.themoviedb.org/3/${type}?language=en-US'`,
           {
             headers: {
               Authorization: `Bearer ${apiKey}`,
