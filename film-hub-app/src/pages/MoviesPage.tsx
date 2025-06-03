@@ -1,14 +1,11 @@
+import { useParams } from "react-router";
 import FilmListItem from "../components/film-list-item.component";
 import useFilmFetch from "../hooks/useFilmFetch";
 
-interface pageType {
-  type: string;
-}
-
-const MoviesPage = (props: pageType) => {
-  const { type } = props;
+const MoviesPage = () => {
+  const { type } = useParams();
   const { films, isLoading, error } = useFilmFetch({
-    type: "movie/popular",
+    type: "movie/type",
     page: 1,
   });
   return (
