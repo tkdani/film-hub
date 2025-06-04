@@ -20,7 +20,7 @@ const useFilmFetch = (props: filmType) => {
       setError(null);
       try {
         const res = await fetch(
-          `https://api.themoviedb.org/3/${type}?page=${page}`,
+          `https://api.themoviedb.org/3/${type}?language=en-US&page=${page}`,
           {
             headers: {
               Authorization: `Bearer ${apiKey}`,
@@ -29,21 +29,20 @@ const useFilmFetch = (props: filmType) => {
         );
         if (!res.ok) throw Error("Error in fetching data");
         const data = await res.json();
-
         const filteredFilms: Film[] = data.results.map((item: any) => ({
           id: item.id,
-          title: item.media_type === "tv" ? item.name : item.title,
+          title: item.name ? item.name : item.title,
           overview: item.overview,
           poster_path: item.poster_path,
           backdrop_path: item.backdrop_path,
-          release_date:
-            item.media_type === "tv" ? item.first_air_date : item.release_date,
+          release_date: item.first_air_date
+            ? item.first_air_date
+            : item.release_date,
           vote_average: item.vote_average,
           vote_count: item.vote_count,
           popularity: item.popularity,
           genre_ids: item.genre_ids,
           original_language: item.original_language,
-          media_type: item.media_type,
         }));
 
         setFilms(filteredFilms);
@@ -54,7 +53,7 @@ const useFilmFetch = (props: filmType) => {
       }
     };
     filmFetch();
-  }, []);
+  }, [type, page]);
 
   return { films, isLoading, error };
 };

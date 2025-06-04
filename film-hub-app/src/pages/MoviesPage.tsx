@@ -1,12 +1,14 @@
 import { useParams } from "react-router";
 import FilmListItem from "../components/film-list-item.component";
 import useFilmFetch from "../hooks/useFilmFetch";
+import { useState } from "react";
 
 const MoviesPage = () => {
   const { type } = useParams();
+  const [page, setPage] = useState(1);
   const { films, isLoading, error } = useFilmFetch({
-    type: "movie/type",
-    page: 1,
+    type: `movie/${type}`,
+    page: page,
   });
   return (
     <div className="flex flex-col items-center px-10">

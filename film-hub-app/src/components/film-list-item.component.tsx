@@ -20,7 +20,9 @@ const FilmListItem = (props: ListItem) => {
         )}
       </div>
       <div className="bg-white/50 flex flex-col justify-between h-20 border-1 border-t-0 rounded-br-xs rounded-bl-xs p-1">
-        <span className="text-pretty w-40">{film.title}</span>
+        <span className="text-pretty w-40 line-clamp-2 overflow-hidden text-ellipsis max-w-11/12">
+          {film.title}
+        </span>
         <div className="flex flex-row items-center justify-between">
           <span className="italic text-xs">
             {film.vote_average.toFixed(1)} / 10 ({film.vote_count})

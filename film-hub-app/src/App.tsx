@@ -3,7 +3,7 @@ import SearchBar from "./components/search-bar.component";
 
 const App = () => {
   return (
-    <div className="min-h-screen bg-linear-180 from-black via-green-950 to-green-900 text-white p-1">
+    <div className="min-h-screen bg-linear-180 from-black via-green-950 to-green-900 text-white p-1 pb-5">
       <SearchBar />
       <Outlet />
     </div>

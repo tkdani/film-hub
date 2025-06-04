@@ -27,16 +27,16 @@ const SearchBar = () => {
         Series
         <ol className="hidden list-none absolute w-max bg-black rounded border-1 top-10 left-0 group-hover:block">
           <li className="px-2 py-1 hover:bg-green-800/80 rounded">
-            <NavLink to={"/movies/popular"}>Popular</NavLink>
+            <NavLink to={"/series/popular"}>Popular</NavLink>
           </li>
           <li className="px-2 py-1 hover:bg-green-800/80 rounded">
-            <NavLink to={"/movies/airing_today"}>Airing Today</NavLink>
+            <NavLink to={"/series/airing_today"}>Airing Today</NavLink>
           </li>
           <li className="px-2 py-1 hover:bg-green-800/80 rounded">
-            <NavLink to={"/movies/on_tv"}>On Tv</NavLink>
+            <NavLink to={"/series/on_tv"}>On Tv</NavLink>
           </li>
           <li className="px-2 py-1 hover:bg-green-800/80 rounded">
-            <NavLink to={"/movies/top_rated"}>Top Rated</NavLink>
+            <NavLink to={"/series/top_rated"}>Top Rated</NavLink>
           </li>
         </ol>
       </li>
